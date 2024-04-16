@@ -1,4 +1,6 @@
 # proton-runner
+[![Docker Repository on Quay](https://quay.io/repository/steamutils/proton-runner/status?token=e7714c09-d899-4026-a596-45797f70de92 "Docker Repository on Quay")](https://quay.io/repository/steamutils/proton-runner)
+
 Container image for running windows applications on linux using Valve's Proton via GE-Proton releases provided by GloriousEggroll
 
 ## Requirements
