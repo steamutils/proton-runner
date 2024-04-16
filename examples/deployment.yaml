@@ -1,0 +1,20 @@
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: steamapp-2278520
+spec:
+  replicas: 1
+  template:
+    spec:
+      containers:
+      - name: steamcmd
+        image: quay.io/steamutils/steamcmd:latest
+        volumeMounts:
+        - mountPath: /mnt/app
+          name: appvol
+        args: ["+@sSteamCmdForcePlatformType","windows","+force_install_dir","/mnt/app","+login","anonymous","+app_update","2278520","-public","validate"]
+      volumes:
+      - name: appvol
+        persistentVolumeClaim:
+          claimName: steamapp-2278520
