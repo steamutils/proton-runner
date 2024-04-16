@@ -11,13 +11,11 @@ RUN curl -sLOJ "https://github.com/GloriousEggroll/proton-ge-custom/releases/dow
 	&& rm -f GE-Proton*.* \
 	&& rm -rf /etc/machine-id \
 	&& dbus-uuidgen --ensure=/etc/machine-id \
-	&& mkdir -p /proton-prefix && chmod -R 775 /proton-prefix && chown -R :0 /proton-prefix && chgrp -R 0 /proton-prefix \
-	&& mkdir -p /app && chmod -R 775 /app && chown -R :0 /app && chgrp -R 0 /app
+	&& mkdir -p /proton && chmod -R 775 /proton && chown -R :0 /proton && chgrp -R 0 /proton \
+	&& mkdir -p /steamapp && chmod -R 775 /steamapp && chown -R :0 /steamapp && chgrp -R 0 /steamapp
 
-ENV APP_MOUNT /app
-ENV STEAM_COMPAT_DATA_PATH=/proton-prefix 
+ENV STEAM_COMPAT_DATA_PATH=/proton 
 ENV STEAM_COMPAT_CLIENT_INSTALL_PATH /root/.steam
-COPY ./entrypoint /entrypoint
-WORKDIR /app
+WORKDIR /steamapp
 LABEL org.opencontainers.image.source=https://github.com/steamutils/proton-runner
-ENTRYPOINT ["/entrypoint"]
+ENTRYPOINT ["proton","runinprefix"]

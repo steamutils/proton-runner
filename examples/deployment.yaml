@@ -8,13 +8,33 @@ spec:
   template:
     spec:
       containers:
-      - name: steamcmd
-        image: quay.io/steamutils/steamcmd:latest
+      - name: enshrouded
+        image: quay.io/steamutils/proton-runner:latest
+        args: ["/steamapp/myapp.exe"]
         volumeMounts:
-        - mountPath: /mnt/app
-          name: appvol
-        args: ["+@sSteamCmdForcePlatformType","windows","+force_install_dir","/mnt/app","+login","anonymous","+app_update","2278520","-public","validate"]
+        - mountPath: /steamapp
+          name: steamapp
+        - mountPath: /proton
+          name: proton
+        - mountPath: /steamapp/application_config.json
+          name: config
+        ports:
+        - name: app-udp
+          containerPort: 15636
+          hostPort: 15626
+          protocol: UDP
+        - name: query-udp
+          containerPort: 15637
+          hostPort: 15637
+          protocol: UDP
       volumes:
-      - name: appvol
+      - name: steamapp
         persistentVolumeClaim:
           claimName: steamapp-2278520
+      - name: proton
+        persistentVolumeClaim:
+          claimName: proton-2278520
+      - name: config
+        hostPath:
+          path: ./local_application_config.json
+          type: File
