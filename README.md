@@ -43,7 +43,7 @@ spec:
         image: quay.io/steamutils/proton-runner:latest
         restartPolicy: Always
         imagePullPolicy: Always
-        args: ["/path/to/executable.exe"]]
+        args: ["/path/to/executable.exe"]
         volumeMounts:
         - mountPath: /steamapp
           name: steamapp
