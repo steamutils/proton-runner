@@ -12,7 +12,7 @@ Container image for running windows applications on linux using Valve's Proton v
 ### Vars
 | Variable Name | Required? | Example |
 | --- | --- | --- |
-| EXECUTABLE_PATH | yes | enshrouded_server.exe |
+| EXECUTABLE_PATH | yes | application.exe |
 
 ### Mounts
 | Mount Path | Required? | Description |
