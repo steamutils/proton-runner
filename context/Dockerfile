@@ -14,6 +14,7 @@ RUN curl -sLOJ "https://github.com/GloriousEggroll/proton-ge-custom/releases/dow
 	&& mkdir -p /proton && chmod -R 775 /proton && chown -R :0 /proton && chgrp -R 0 /proton \
 	&& mkdir -p /steamapp && chmod -R 775 /steamapp && chown -R :0 /steamapp && chgrp -R 0 /steamapp
 
+ENV HOME /root
 ENV STEAM_COMPAT_DATA_PATH=/proton 
 ENV STEAM_COMPAT_CLIENT_INSTALL_PATH /root/.steam
 WORKDIR /steamapp
