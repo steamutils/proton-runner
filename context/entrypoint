@@ -1,11 +1,12 @@
 #!/bin/bash
 
 # This will go ahead and install/update the app if requested.
-if [ $RUN_STEAMCMD == 'true' ]
+if ![ $STEAMCMD_ARGS == '' ]
 then
 	steamcmd.sh $STEAMCMD_ARGS
 else
-	echo 'RUN_STEAMCMD not set, ignoring update/install'
+	echo 'No STEAMCMD_ARGS were passed. Skipping Application Update.'
+	steamcmd.sh +quit
 fi
 
 # On K8s, your seccomp profile will usually assign you a random UID, which means the /proton dir will have user: root ownership. 
@@ -16,4 +17,4 @@ fi
 [ -d /proton/pfx ] || mkdir -p /proton/pfx 
 
 # Here we simply call proton and pass in all args as a splat to give the container control over if they want to proton run, proton runinprefix, or otherwise.
-proton "$@"
+proton runinprefix "$@"
