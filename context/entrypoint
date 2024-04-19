@@ -1,0 +1,20 @@
+#!/bin/bash
+
+# This will go ahead and install/update the app if requested.
+if [ ! -z "${STEAMCMD_ARGS}" ]
+then
+	steamcmd.sh $STEAMCMD_ARGS
+else
+	echo 'No STEAMCMD_ARGS were passed. Skipping Application Update.'
+	steamcmd.sh +quit
+fi
+
+# On K8s, your seccomp profile will usually assign you a random UID, which means the /proton dir will have user: root ownership. 
+# WINE will not run if the prefix is not directly owned by you, even if it's writeable as an intended behavior to restrict normal users from sharing an execution prefix which can risk registry corruption.
+# Proton by default tries to winecfg a directory called ./pfx in the STEAM_COMPAT_* env var path, but in this case, we check if it already exists and make it ourselves to circumvent WINE's issue with lack of directory ownership.
+# Creating the directory ahead of time gives the K8s namespace user ownership of the created directory during exec of the container.
+# This can't be done in the container image, as it will be owned by the UID/GID of the container and not the user.
+[ -d /proton/pfx ] || mkdir -p /proton/pfx 
+
+# Here we simply call proton and pass in all args as a splat to give the container control over if they want to proton run, proton runinprefix, or otherwise.
+proton runinprefix "$@"

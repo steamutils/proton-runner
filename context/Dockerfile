@@ -19,4 +19,5 @@ ENV STEAM_COMPAT_DATA_PATH=/proton
 ENV STEAM_COMPAT_CLIENT_INSTALL_PATH /root/.steam
 WORKDIR /steamapp
 LABEL org.opencontainers.image.source=https://github.com/steamutils/proton-runner
-ENTRYPOINT ["proton","runinprefix"]
+COPY ./entrypoint /entrypoint
+ENTRYPOINT ["/entrypoint"]
