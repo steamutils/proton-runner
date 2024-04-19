@@ -2,7 +2,7 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: steamapp-2278520
+  name: enshrouded-dedicated-server
 spec:
   replicas: 1
   template:
@@ -10,13 +10,16 @@ spec:
       containers:
       - name: enshrouded
         image: quay.io/steamutils/proton-runner:latest
-        args: ["/steamapp/myapp.exe"]
+        env:
+        - name: STEAMCMD_ARGS
+          value: '+@sSteamCmdForcePlatformType windows +force_install_dir /steamapp +login anonymous +app_update 2278520 -public validate +quit'
+        args: ["enshrouded_server.exe"]
         volumeMounts:
         - mountPath: /steamapp
           name: steamapp
         - mountPath: /proton
           name: proton
-        - mountPath: /steamapp/application_config.json
+        - mountPath: /steamapp/enshrouded_server.json
           name: config
         ports:
         - name: app-udp
@@ -36,5 +39,5 @@ spec:
           claimName: proton-2278520
       - name: config
         hostPath:
-          path: ./local_application_config.json
+          path: ./enshrouded_server.json
           type: File
