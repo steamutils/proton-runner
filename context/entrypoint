@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # This will go ahead and install/update the app if requested.
-if [ ! -z "${$STEAMCMD_ARGS}" ]
+if [ ! -z "${STEAMCMD_ARGS}" ]
 then
 	steamcmd.sh $STEAMCMD_ARGS
 else
