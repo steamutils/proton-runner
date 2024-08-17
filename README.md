@@ -28,15 +28,15 @@ Example (Proton)
 podman run -d --name my-app \
 	-e STEAMCMD_ARGS='... ... +quit' \
 	-v steamapp-volume:/steamapp:z \
-	quay.io/steamutils/proton-runner:latest \
+	quay.io/steamutils/runner:latest \
 	application.exe <<<----------------- this gets passed to entrypoint
 ```
 Example (Wine)
 ```
 podman run -d --name my-app \
 	-e STEAMCMD_ARGS='... ... +quit' \
-  -e WINE_ONLY=true \
+  	-e WINE_ONLY=true \
 	-v steamapp-volume:/steamapp:z \
-	quay.io/steamutils/proton-runner:latest \
+	quay.io/steamutils/runner:latest \
 	application.exe <<<----------------- this gets passed to entrypoint
 ```
