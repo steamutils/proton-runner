@@ -1,7 +1,7 @@
-# proton-runner
+# runner
 [![Docker Repository on Quay](https://quay.io/repository/steamutils/proton-runner/status?token=e7714c09-d899-4026-a596-45797f70de92 "Docker Repository on Quay")](https://quay.io/repository/steamutils/proton-runner)
 
-Container image for running windows applications on linux using Valve's Proton via GE-Proton releases provided by GloriousEggroll
+Container image for running windows applications on linux using Valve's Proton or Wine via GE-Proton releases provided by GloriousEggroll
 
 ## Requirements
 
@@ -29,7 +29,7 @@ podman run -d --name my-app \
 	-e STEAMCMD_ARGS='... ... +quit' \
 	-v steamapp-volume:/steamapp:z \
 	quay.io/steamutils/proton-runner:latest \
-	/path/to/application.exe <<<----------------- this gets passed to entrypoint
+	application.exe <<<----------------- this gets passed to entrypoint
 ```
 Example (Wine)
 ```
@@ -38,5 +38,5 @@ podman run -d --name my-app \
   -e WINE_ONLY=true \
 	-v steamapp-volume:/steamapp:z \
 	quay.io/steamutils/proton-runner:latest \
-	/path/to/application.exe <<<----------------- this gets passed to entrypoint
+	application.exe <<<----------------- this gets passed to entrypoint
 ```
