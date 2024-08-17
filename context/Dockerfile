@@ -1,5 +1,5 @@
 ARG GE_PROTON_VERSION="9-11"
-FROM quay.io/steamutils/steamcmd:latest
+FROM registry.access.redhat.com/ubi9/ubi-minimal:latest
 
 RUN microdnf install -y dbus-tools python3 freetype freetype.i686 glibc.i686 libstdc++.i686 tar gzip \
 	--setopt=install_weak_deps=0 \
