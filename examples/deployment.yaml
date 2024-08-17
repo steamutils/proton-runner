@@ -9,7 +9,7 @@ spec:
     spec:
       containers:
       - name: enshrouded
-        image: quay.io/steamutils/proton-runner:latest
+        image: quay.io/steamutils/runner:latest
         env:
         - name: STEAMCMD_ARGS
           value: '+@sSteamCmdForcePlatformType windows +force_install_dir /steamapp +login anonymous +app_update 2278520 -public validate +quit'

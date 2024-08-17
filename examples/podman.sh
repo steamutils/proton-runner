@@ -8,5 +8,5 @@ podman run -d --name enshrouded \
   -v steamapp-2278520:/steamapp:z \
   -v ./enshrouded_server.json:/steamapp/enshrouded_server.json:z \
   -p 15637:15637/udp \
-  quay.io/steamutils/proton-runner:latest \
+  quay.io/steamutils/runner:latest \
   enshrouded_server.exe
