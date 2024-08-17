@@ -17,15 +17,9 @@ spec:
         volumeMounts:
         - mountPath: /steamapp
           name: steamapp
-        - mountPath: /proton
-          name: proton
         - mountPath: /steamapp/enshrouded_server.json
           name: config
         ports:
-        - name: app-udp
-          containerPort: 15636
-          hostPort: 15626
-          protocol: UDP
         - name: query-udp
           containerPort: 15637
           hostPort: 15637
@@ -34,9 +28,6 @@ spec:
       - name: steamapp
         persistentVolumeClaim:
           claimName: steamapp-2278520
-      - name: proton
-        persistentVolumeClaim:
-          claimName: proton-2278520
       - name: config
         hostPath:
           path: ./enshrouded_server.json

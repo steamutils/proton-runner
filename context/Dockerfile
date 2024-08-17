@@ -15,8 +15,9 @@ RUN curl -sLOJ "https://github.com/GloriousEggroll/proton-ge-custom/releases/dow
 	&& mkdir -p /steamapp && chmod -R 775 /steamapp && chown -R :0 /steamapp && chgrp -R 0 /steamapp
 
 ENV HOME /root
-ENV STEAM_COMPAT_DATA_PATH=/steamapp/pfx 
+ENV STEAM_COMPAT_DATA_PATH /steamapp/pfx 
 ENV STEAM_COMPAT_CLIENT_INSTALL_PATH /root/.steam
+ENV WINEPREFIX /steamapp/pfx
 WORKDIR /steamapp
 LABEL org.opencontainers.image.source=https://github.com/steamutils/proton-runner
 COPY ./entrypoint /entrypoint
