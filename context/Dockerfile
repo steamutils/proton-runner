@@ -29,7 +29,7 @@ RUN ln -s /root/.steam/linux32 /root/.steam/sdk32 \
 
 ENV HOME /root
 ENV PATH $PATH:/root/.steam:/usr/local/bin/files/bin:/usr/local/bin
-ENV STEAM_COMPAT_DATA_PATH /steamapp/pfx 
+ENV STEAM_COMPAT_DATA_PATH /steamapp
 ENV STEAM_COMPAT_CLIENT_INSTALL_PATH /root/.steam
 ENV WINEPREFIX /steamapp/pfx
 WORKDIR /steamapp
