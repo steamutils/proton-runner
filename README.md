@@ -1,5 +1,5 @@
 # runner
-[![Docker Repository on Quay](https://quay.io/repository/nswc-ccrn/runner/status "Docker Repository on Quay")](https://quay.io/repository/nswc-ccrn/runner)
+[![Docker Repository on Quay](https://quay.io/repository/steamutils/runner/status "Docker Repository on Quay")](https://quay.io/repository/steamutils/runner)
 
 Container image for running windows applications on linux using Valve's Proton or Wine via GE-Proton releases provided by GloriousEggroll
 
